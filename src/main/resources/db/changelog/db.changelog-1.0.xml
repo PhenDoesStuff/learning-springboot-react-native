@@ -9,5 +9,18 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.9.0.xsd">
 
-    <include file="db/changelog-1.0.xml" />
+    <changeSet id="1" author="sha">
+        <sql>
+            CREATE TABLE user (
+                id BIGINT NOT NULL AUTO_INCREMENT,
+                username VARCHAR (255) NOT NULL,
+                username VARCHAR (255) NOT NULL,
+                username VARCHAR (255) NOT NULL,
+                CONSTRAINT PK_id PRIMARY KEY (id)
+            )
+        </sql>
+        <rollback>
+            DROP table user;
+        </rollback>
+    </changeSet>
 </databaseChangeLog>
