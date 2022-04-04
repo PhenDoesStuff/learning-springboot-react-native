@@ -13,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -32,5 +33,5 @@ public class Transaction {
     private User user;
 
     @Column(name = "purchase_date")
-    private LocalDate purchaseDate;
+    private LocalDateTime purchaseDate;
 }
