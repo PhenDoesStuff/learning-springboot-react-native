@@ -1,6 +1,6 @@
 package com.montague.serverproductmanagement.controller;
 
-import com.montague.serverproductmanagement.model.Product;
+import com.montague.serverproductmanagement.jwt.JwtTokenProvider;
 import com.montague.serverproductmanagement.model.Role;
 import com.montague.serverproductmanagement.model.Transaction;
 import com.montague.serverproductmanagement.model.User;
@@ -10,6 +10,7 @@ import com.montague.serverproductmanagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,9 @@ import java.time.LocalDateTime;
 
 @RestController
 public class UserController {
+
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
 
     @Autowired
     private UserService userService;
@@ -44,9 +48,13 @@ public class UserController {
     public ResponseEntity<?> getUser(Principal principal) {
         if (principal == null || principal.getName() == null) {
             return ResponseEntity.ok(principal);
-        } else {
-            return new ResponseEntity<>(userService.findByUsername(principal.getName()), HttpStatus.OK);
         }
+        UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) principal;
+        User user = userService.findByUsername(authenticationToken.getName());
+        user.setToken(jwtTokenProvider.generateToken(authenticationToken));
+        
+        return new ResponseEntity<>(user, HttpStatus.OK);
+
     }
 
     @PostMapping("api/user/purchase")

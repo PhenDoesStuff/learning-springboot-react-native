@@ -1,5 +1,7 @@
 package com.montague.serverproductmanagement.config;
 
+import com.montague.serverproductmanagement.jwt.JWRAuthorizationFilter;
+import com.montague.serverproductmanagement.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +21,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private JwtTokenProvider jwtTokenProvider;
+
+    @Autowired
     private UserDetailsService userDetailsService;
 
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -38,6 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().permitAll().logoutRequestMatcher(new AntPathRequestMatcher("/api/user/logout", "POST")).and()
                 // Login form and path
                 .formLogin().loginPage("/api/user/login").and().httpBasic().and().csrf().disable();
+
+        http.addFilter(new JWRAuthorizationFilter(authenticationManager(), jwtTokenProvider));
     }
 
     @Override
