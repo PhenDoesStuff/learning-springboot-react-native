@@ -1,38 +1,105 @@
-HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-/src/main/resources/application.properties
+### MAIN FOLDER ###
+.DS_Store
+
+### BACKEND ###
+backend/HELP.md
+backend/.gradle
+backend/build/
+backend/!gradle/wrapper/gradle-wrapper.jar
+backend/!**/src/main/**/build/
+backend/!**/src/test/**/build/
+backend/src/main/resources/application.properties
 
 ### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+backend/.apt_generated
+backend/.classpath
+backend/.factorypath
+backend/.project
+backend/.settings
+backend/.springBeans
+backend/.sts4-cache
+backend/bin/
+backend/!**/src/main/**/bin/
+backend/!**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+backend/.idea
+backend/*.iws
+backend/*.iml
+backend/*.ipr
+backend/out/
+backend/!**/src/main/**/out/
+backend/!**/src/test/**/out/
 
 ### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+backend/nbproject/private/
+backend/nbbuild/
+backend/dist/
+backend/nbdist/
+backend/.nb-gradle/
 
 ### VS Code ###
-.vscode/
+backend/.vscode/
+
+###FRONTEND
+# OSX
+#
+frontend/.DS_Store
+
+# Xcode
+#
+frontend/build/
+frontend/*.pbxuser
+frontend/!default.pbxuser
+frontend/*.mode1v3
+frontend/!default.mode1v3
+frontend/*.mode2v3
+frontend/!default.mode2v3
+frontend/*.perspectivev3
+frontend/!default.perspectivev3
+frontend/xcuserdata
+frontend/*.xccheckout
+frontend/*.moved-aside
+frontend/DerivedData
+frontend/*.hmap
+frontend/*.ipa
+frontend/*.xcuserstate
+
+# Android/IntelliJ
+#
+frontend/build/
+frontend/.idea
+frontend/.gradle
+frontend/local.properties
+frontend/*.iml
+frontend/*.hprof
+
+# node.js
+#
+frontend/node_modules/
+frontend/npm-debug.log
+frontend/yarn-error.log
+
+# BUCK
+frontend/buck-out/
+frontend/\.buckd/
+frontend/*.keystore
+frontend/!debug.keystore
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+frontend/*/fastlane/report.xml
+frontend/*/fastlane/Preview.html
+frontend/*/fastlane/screenshots
+
+# Bundle artifact
+frontend/*.jsbundle
+
+# Ruby / CocoaPods
+frontend/ios/Pods/
+frontend/vendor/bundle/

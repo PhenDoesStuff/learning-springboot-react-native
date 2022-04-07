@@ -52,7 +52,7 @@ public class UserController {
         UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) principal;
         User user = userService.findByUsername(authenticationToken.getName());
         user.setToken(jwtTokenProvider.generateToken(authenticationToken));
-        
+
         return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
