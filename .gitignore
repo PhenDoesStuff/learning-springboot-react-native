@@ -1,5 +1,7 @@
 ### MAIN FOLDER ###
 .DS_Store
+.gradle
+.idea
 
 ### BACKEND ###
 backend/HELP.md
