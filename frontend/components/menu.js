@@ -1,4 +1,3 @@
-import react from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
@@ -7,6 +6,7 @@ import {Icon} from '@rneui/base';
 import HomePage from '../pages/HomePage';
 import ProductPage from '../pages/ProductPage';
 import DetailPage from '../pages/DetailPage';
+import DrawerContent from './menu.content';
 
 const ListStack = createStackNavigator(
   {
@@ -36,6 +36,7 @@ const Menu = createDrawerNavigator(
     },
   },
   {
+    contentComponent: DrawerContent,
     drawerWidth: 300,
     drawerPosition: 'left',
     initialRouteName: 'Home',

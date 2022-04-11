@@ -6,6 +6,7 @@ import {Icon} from '@rneui/base';
 import HomePage from '../pages/HomePage';
 import AdminPage from '../pages/AdminPage';
 import UserPage from '../pages/UserPage';
+import DrawerContent from './menu.content';
 
 const ListStack = createStackNavigator(
   {
@@ -33,6 +34,7 @@ const Menu = createDrawerNavigator(
     },
   },
   {
+    componentContent: DrawerContent,
     drawerWidth: 300,
     drawerPosition: 'left',
     initialRouteName: 'Home',
